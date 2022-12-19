@@ -14,15 +14,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.red,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -71,96 +62,201 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          const SizedBox(
-            height: 50,
-            width: 0,
-          ),
-          Text(
-            '$_city',
-            style: Theme.of(context).textTheme.headline4,
-          ),
-          const SizedBox(
-            height: 20,
-            width: 0,
-          ),
-          Text(
-            '$_temp\º',
-            style: Theme.of(context).textTheme.headline4,
-          ),
-          const SizedBox(
-            height: 20,
-            width: 0,
-          ),
-          Text(
-            '$_description',
-            style: Theme.of(context).textTheme.headline4,
-          ),
-          const SizedBox(
-            height: 20,
-            width: 0,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+        body: Stack(
             children: <Widget>[
-              Text(
-                'Max. $_maxTemp\º',
-                style: Theme.of(context).textTheme.headline4,
-              ),
-              const SizedBox(
-                width: 20,
-                height: 0,
-              ),
-              Text(
-                'Min. $_minTemp\º',
-                style: Theme.of(context).textTheme.headline4,
-              ),
-            ],
-          ),
-          ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: _forecasts.length,
-              itemBuilder: (BuildContext context, int index) {
-                var item = _forecasts[index];
-                var tempMin = item.tempMin!.celsius!.toStringAsFixed(1);
-                var day = item.date!.day;
-                var month = item.date!.month;
-
-                var hour = item.date!.hour;
-                var tempMax = item.tempMax!.celsius!.toStringAsFixed(1);
-                print("hola");
-                return Row(
+            Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/gifBack.gif'),
+                  fit: BoxFit.cover),
+            ),
+              child: SingleChildScrollView(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    const Expanded(child: SizedBox(width: 40,
-                      height: 0,)),
-                    Text(
-                      '$day\/$month',
-                      style: Theme.of(context).textTheme.headline4,
+                    const SizedBox(
+                      height: 50,
+                      width: 0,
                     ),
-                    const Expanded(child: SizedBox(width: 30,
-                    height: 0,)),
                     Text(
-                      '$hour\h',
-                      style: Theme.of(context).textTheme.headline4,
+                      '$_city',
+                      style: const TextStyle(fontSize: 50.0,
+                        fontWeight: FontWeight.bold,
+                        color : Colors.white,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 20.0,
+                            color: Colors.black,
+                          ),
+                          Shadow(
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 20.0,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
                     ),
-                    const Expanded(child: SizedBox(width: 30,
-                    height: 0,)),
+                    const SizedBox(
+                      height: 20,
+                      width: 0,
+                    ),
                     Text(
-                      '$tempMax\º - $tempMin\º',
-                      style: Theme.of(context).textTheme.headline4,
+                      '$_temp\º',
+                      style: const TextStyle(fontSize: 120.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 20.0,
+                            color: Colors.black,
+                          ),
+                          Shadow(
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 20.0,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
                     ),
-                    const Expanded(child: SizedBox(width: 40,
-                      height: 0,)),
+                    const SizedBox(
+                      height: 20,
+                      width: 0,
+                    ),
+                    Text(
+                      '$_description',
+                      style: const TextStyle(fontSize: 32.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 20.0,
+                            color: Colors.black,
+                          ),
+                          Shadow(
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 20.0,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                      width: 0,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'Max. $_maxTemp\º',
+                          style: const TextStyle(fontSize: 32.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(2.0, 2.0),
+                                blurRadius: 20.0,
+                                color: Colors.black,
+                              ),
+                              Shadow(
+                                offset: Offset(2.0, 2.0),
+                                blurRadius: 20.0,
+                                color: Colors.black,
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                          height: 0,
+                        ),
+                        Text(
+                          'Min. $_minTemp\º',
+                          style: const TextStyle(fontSize: 32.0,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            shadows: <Shadow>[
+                              Shadow(
+                                offset: Offset(2.0, 2.0),
+                                blurRadius: 20.0,
+                                color: Colors.black,
+                              ),
+                              Shadow(
+                                offset: Offset(2.0, 2.0),
+                                blurRadius: 20.0,
+                                color: Colors.black,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                        padding: const EdgeInsets.all(10),
+                        child:
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: _forecasts.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              var item = _forecasts[index];
+                              var tempMin = item.tempMin!.celsius!.toStringAsFixed(1);
+                              var day = item.date!.day;
+                              var month = item.date!.month;
+
+                              var hour = item.date!.hour;
+                              var tempMax = item.tempMax!.celsius!.toStringAsFixed(1);
+                              return Container(
+                                padding: const EdgeInsets.all(1.0),
+                                child: Material(
+                                  elevation: 4.0,
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  color: Colors.grey.withOpacity(0.2),
+                                  child: Center(
+                                    heightFactor: 2,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: <Widget>[
+                                        const Expanded(child: SizedBox(width: 40,
+                                          height: 0,)),
+                                        Text(
+                                          '$day\/$month',
+                                          style: const TextStyle(fontSize: 20.0,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
+                                        ),
+                                        const Expanded(child: SizedBox(width: 30,
+                                          height: 0,)),
+                                        Text(
+                                          '$hour\h',
+                                          style: const TextStyle(fontSize: 20.0,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),                              ),
+                                        const Expanded(child: SizedBox(width: 30,
+                                          height: 0,)),
+                                        Text(
+                                          '$tempMax\º - $tempMin\º',
+                                          style: const TextStyle(fontSize: 20.0,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),                              ),
+                                        const Expanded(child: SizedBox(width: 40,
+                                          height: 0,)),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            })
+                    )
                   ],
-                );
-              })
-        ],
-      ),
-    ));
+                ),
+              ),
+          ),
+          ]
+        ),
+    );
   }
 }
