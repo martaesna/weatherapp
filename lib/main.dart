@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Weather> _forecasts = <Weather>[];
   late WeatherFactory wf;
 
-  void _incrementCounter() async {
+  void _APIRequest() async {
     wf = WeatherFactory('6a408860302c1893ee3c25b9f9b1024e');
     Weather w = await wf.currentWeatherByCityName(_city);
     _forecasts = await wf.fiveDayForecastByCityName(_city);
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    _incrementCounter();
+    _APIRequest();
     super.initState();
   }
 
